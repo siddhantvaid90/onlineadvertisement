@@ -13,7 +13,7 @@ agent{label 'master'}
 			stages{
                   stage('Checkout'){
                steps{
-                git branch: 'main', url: 'https://github.com/sumit-singh-shekhawat/Buzztalk.git'
+                git branch: 'main', url: 'https://github.com/siddhantvaid90/onlineadvertisement.git'
             }
         }
 
