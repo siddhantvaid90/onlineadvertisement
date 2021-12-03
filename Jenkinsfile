@@ -15,7 +15,7 @@ echo "@GIT_BRANCH"
 }
 stage('Checkout'){
 steps{
-git branch: 'main', url: 'https://github.com/poojadeshmukh1/online.advertisement.system-main.git'
+git branch: 'main', url: 'https://github.com/siddhantvaid90/onlineadvertisement.git'
 }
 }
 stage('Build'){
