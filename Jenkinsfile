@@ -35,4 +35,3 @@ agent{label 'master'}
 
 	                }
 }
-		}
