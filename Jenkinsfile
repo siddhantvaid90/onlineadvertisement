@@ -4,7 +4,7 @@ label 'master'
 
 tools{
 
-maven 'apache-maven_3_8_0'
+maven 'maven'
 
 }
 
