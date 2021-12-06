@@ -1,81 +1,44 @@
+
 pipeline{
+       agent any            
+        tools{
+             maven 'maven'
+             }
 
-agent {
-
-label 'master'
-
-tools{
-
-maven 'maven'
-
-}
-
-
-
-stages {
-
-stage('Verify Branch'){
-
-steps{
-
-echo "@GIT_BRANCH"
-
-}
-
-}
+             stages {
+                   stage('Verify Branch'){
+                   steps{
+                           echo "@GIT_BRANCH"
 
 
 
-stage('Checkout') {
+                        }
+                      }
+         stage('Checkout'){
+              steps{
+                   git branch: 'main', url: 'https://github.com/siddhantvaid90/onlineadvertisement.git'
+                    }
+               }
+              stage('Build'){
+               steps{
+                   bat 'mvn compile'
+                     }
+                       }
+                  stage('Package'){
+                   steps{
+                           bat 'mvn package'
+                        }
+                     }
 
-steps{
-
-git branch: 'main', url: 'https://github.com/siddhantvaid90/onlineadvertisement.git'
-
-}
-
-}
-
-
-
-stage('Build') {
-
-steps{
-
-bat 'mvn compile'
-
-
-
-}
-
-}
-
-
-
-stage('Test') {
-
-steps{
-
-bat 'mvn test'
-
-}
-
-}
+                           stage('Test'){
+                            steps{
+                                    bat 'mvn test'
+                                }
+                             }
 
 
 
-stage('Package') {
 
-steps{
 
-bat 'mvn package'
-
-}
-
-}
-
-}
-
-}
-
-}
+               }
+        }
