@@ -1,48 +1,79 @@
-pipeline{
-agent any
+agent {
+
+label 'master'
+
 tools{
-maven 'apache-maven-3.8.3'
+
+maven 'apache-maven_3_8_0'
+
 }
+
+
 
 stages {
+
 stage('Verify Branch'){
+
 steps{
+
 echo "@GIT_BRANCH"
 
-
+}
 
 }
-}
-stage('Checkout'){
+
+
+
+stage('Checkout') {
+
 steps{
+
 git branch: 'main', url: 'https://github.com/siddhantvaid90/onlineadvertisement.git'
+
 }
+
 }
-stage('Build'){
+
+
+
+stage('Build') {
+
 steps{
+
 bat 'mvn compile'
-}
-}
-stage('Package'){
-steps{
-bat 'mvn package'
-}
+
+
+
 }
 
-stage('Test'){
+}
+
+
+
+stage('Test') {
+
 steps{
+
 bat 'mvn test'
+
 }
+
 }
-stage('Deploy'){
+
+
+
+stage('Package') {
+
 steps{
-bat 'java -jar "C:/Program Files (x86)/Jenkins/workspace/OnlineJob1/target/newspaper.advertisement.system-0.0.1-SNAPSHOT.jar"'
-}
-}
 
-
-
-
+bat 'mvn package'
 
 }
+
+}
+
+}
+
+}
+
 }
